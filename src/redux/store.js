@@ -1,41 +1,37 @@
-// import { configureStore } from '@reduxjs/toolkit';
-// import {
-//   persistStore,
-//   persistReducer,
-//   FLUSH,
-//   REHYDRATE,
-//   PAUSE,
-//   PERSIST,
-//   PURGE,
-//   REGISTER,
-// } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
-// import { authReducer } from './auth/authSlice';
-// import { diaryReducer } from './diary/diarySlice';
-// import { exercisesReducer } from './exercises/exercisesSlice';
-// import { statisticsReducer } from './statistics/statisticsSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import { advertsReducer } from './advertsSlice';
+import { favoritesReducer } from './favoritesSlice';
 
-// const authPersistConfig = {
-//   key: 'auth',
-//   storage,
-//   whitelist: ['token'],
-// };
+const persistConfig = {
+  key: 'favorites',
+  storage,
+  whitelist: ['favorites'],
+};
 
-// const persistedReducer = persistReducer(authPersistConfig, authReducer);
+const persistedReducer = persistReducer(persistConfig, favoritesReducer);
 
-// export const store = configureStore({
-//   reducer: {
-//     auth: persistedReducer,
-//     diary: diaryReducer,
-//     exercises: exercisesReducer,
-//     statistics: statisticsReducer,
-//   },
-//   middleware: getDefaultMiddleware =>
-//     getDefaultMiddleware({
-//       serializableCheck: {
-//         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-//       },
-//     }),
-// });
+export const store = configureStore({
+  reducer: {
+    adverts: advertsReducer,
+    favorites: persistedReducer,
+  },
+  middleware: getDefaultMiddleware =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+});
 
-// export const persistor = persistStore(store);
+export const persistor = persistStore(store);
