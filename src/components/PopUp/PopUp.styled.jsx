@@ -20,12 +20,14 @@ export const Wrapper = styled.div`
   position: relative;
   max-width: 541px;
   padding: 40px;
-  height: 752px;
   background-color: ${props => props.theme.colors.white};
   border-radius: 12px;
   @media (max-width: 1439px) {
     overflow: auto;
     margin-top: 36px;
+  }
+  @media (min-width: 1440px) {
+    height: 752px;
   }
 `;
 

@@ -79,7 +79,7 @@ export const SearchButton = styled.button`
     box-shadow: ${props => props.theme.shadows.medium};
     background-color: #0b44cd;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 768px) {
     margin-top: 26px;
   }
 `;

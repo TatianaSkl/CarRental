@@ -18,13 +18,13 @@ export const Wrapper = styled.div`
   display: flex;
   width: 200px;
   height: 100vh;
-  padding: 245px 20px 20px 20px;
+  padding: 145px 20px 20px 20px;
   background-color: ${props => props.theme.colors.accent};
   flex-direction: column;
   justify-content: space-between;
   @media (min-width: 768px) {
     width: 350px;
-    padding: 280px 32px 32px 32px;
+    padding: 180px 32px 32px 32px;
   }
 `;
 
