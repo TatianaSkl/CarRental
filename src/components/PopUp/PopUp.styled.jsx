@@ -11,17 +11,22 @@ export const Overlay = styled.div`
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.8);
   z-index: 1200;
+  @media (min-width: 1440px) {
+    align-items: center;
+  }
 `;
 
 export const Wrapper = styled.div`
-  margin-top: 20px;
-  overflow: auto;
   position: relative;
   max-width: 541px;
   padding: 40px;
   height: 752px;
   background-color: ${props => props.theme.colors.white};
   border-radius: 12px;
+  @media (max-width: 1439px) {
+    overflow: auto;
+    margin-top: 36px;
+  }
 `;
 
 export const IconClose = styled(AiOutlineClose)`

@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAdverts, selectLoading } from 'redux/selectors';
+import { filtredAdverts, selectAdverts, selectIsFiltred, selectLoading } from 'redux/selectors';
 import { fetchAdverts } from 'redux/operations';
-import { AdvertsList, Container, Section } from 'components';
+import { AdvertsList, Container, Filter, Section } from 'components';
 import { ButtonLoadMore } from './Catalog.styled';
+import { Empty } from 'pages/Favorites/Favorites.styled';
 
 export default function Catalog() {
   const dispatch = useDispatch();
   const adverts = useSelector(selectAdverts);
   const loading = useSelector(selectLoading);
+  const isFiltred = useSelector(selectIsFiltred);
+  const filter = useSelector(filtredAdverts);
   const [page, setPage] = useState(() => {
     const savedPage = localStorage.getItem('page');
     return savedPage ? parseInt(savedPage, 10) : 1;
@@ -32,8 +35,15 @@ export default function Catalog() {
   return (
     <Container>
       <Section>
-        <AdvertsList adverts={visibleAdverts} />
-        {visibleAdverts.length < adverts.length && !loading && (
+        <Filter />
+        <AdvertsList adverts={isFiltred ? filter : visibleAdverts} />
+        {isFiltred && filter?.length === 0 && (
+          <Empty>
+            Sorry, no results were found for the filters you selected. You may want to consider
+            other search options to find the you want.
+          </Empty>
+        )}
+        {visibleAdverts.length < adverts.length && !loading && !isFiltred && (
           <ButtonLoadMore onClick={handleLoadMore}>Load more</ButtonLoadMore>
         )}
       </Section>

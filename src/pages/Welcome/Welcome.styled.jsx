@@ -5,7 +5,7 @@ export const WrapperWelcom = styled.div`
   max-width: 1600px;
   height: 400px;
   padding: 100px 0px;
-  background-image: url(https://majorleaguelimoservices.com/wp-content/uploads/2023/01/MMLjpg.jpg);
+  background-image: url(https://tripmydream.cc/travelhub/travel/country/41/article_bg_41.jpg);
   background-position: top center;
   background-repeat: no-repeat;
   background-size: cover;

@@ -71,7 +71,7 @@ export const AdvertsItem = ({
     <>
       <Item key={id}>
         <WrapperFoto>
-          <ImageCar src={img} alt="Car" loading="lazy" />
+          <ImageCar src={img} alt={make} loading="lazy" />
           <Icon isAdvertsInFavorites={isAdvertsInFavorites} onClick={handleFavorite}>
             <AiFillHeart />
           </Icon>
